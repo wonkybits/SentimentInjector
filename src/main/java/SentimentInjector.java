@@ -52,7 +52,8 @@ public class SentimentInjector {
         return dobjDepIndex;
     }
 
-    public void printSentences() {
+    public List<String> getMutatedSentences() {
+        List<String> mutatedSentences = new ArrayList<String>();
         Iterator<List<String>> sentenceIterator = tokenizedSentences.iterator();
         while(sentenceIterator.hasNext()) {
             Iterator<String> tokenIterator = sentenceIterator.next().iterator();
@@ -66,12 +67,14 @@ public class SentimentInjector {
                     output += token;
                 }
             }
-            System.out.println(output);
+            mutatedSentences.add(output);
         }
+
+        return mutatedSentences;
     }
 
     public void injectAdjective() {
-        String adjective = "adjective";
+        String adjective = "beautiful";
 
         for(List list : tokenizedSentences) {
             list.add(this.getDOIndex()-1, adjective);
