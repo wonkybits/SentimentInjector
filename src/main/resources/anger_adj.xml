@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+    Scale is a double value
+    range is (0.5, 10)
+-->
+<words>
+    <word scale="4.4">evil</word>
+    <word scale="2.5">filthy</word>
+    <word scale="3.5">naughty</word>
+    <word scale="5">stupid</word>
+    <word scale="7.8">hateful</word>
+    <word scale="9.5">atrocious</word>
+</words>

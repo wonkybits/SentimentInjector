@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!--
+    Scale is a double value
+    range is (0.5, 10)
+-->
+<words>
+    <word scale="5">badly</word>
+    <word scale="3">silently</word>
+</words>

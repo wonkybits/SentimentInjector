@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+    Scale is a double value
+    range is (0.5, 10)
+-->
+<words>
+    <word scale="7.1">frantically</word>
+    <word scale="5.3">mysteriously</word>
+    <word scale="4.1">mysteriously</word>
+    <word scale="3">reluctantly</word>
+    <word scale="5">suspiciously</word>
+    <word scale="2.8">cautiously</word>
+    <word scale="1.3">anxiously</word>
+    <word scale="6.4">nervously</word>
+</words>

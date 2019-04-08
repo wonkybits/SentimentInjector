@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+    Scale is a double value
+    range is (0.5, 10)
+-->
+<words>
+    <word scale="5.9">splendid</word>
+    <word scale="9.4">amazing</word>
+    <word scale="4.3">remarkable</word>
+    <word scale="5.3">super</word>
+    <word scale="3.3">moderate</word>
+    <word scale="2.5">good</word>
+    <word scale="7">great</word>
+    <word scale="8.2">excellent</word>
+    <word scale="6.7">spectacular</word>
+    <word scale="4.9">ultimate</word>
+    <word scale="3.6">favorable</word>
+    <word scale="7.8">incredible</word>
+    <word scale="5.8">outstanding</word>
+</words>

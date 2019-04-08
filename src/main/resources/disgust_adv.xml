@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+    Scale is a double value
+    range is (0.5, 10)
+-->
+<words>
+    <word scale="5">carelessly</word>
+    <word scale="4.2">deliberately</word>
+    <word scale="8.9">stupidly</word>
+    <word scale="7.8">suspiciously</word>
+</words>

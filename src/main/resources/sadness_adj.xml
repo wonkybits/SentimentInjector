@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!--
+    Scale is a double value
+    range is (0.5, 10)
+-->
+<words>
+    <word scale="9.5">draconian</word>
+    <word scale="2.5">inferior</word>
+</words>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<tests>
+    <case scale="5" emmotion="a">you are a person.</case>
+    <case scale="5" emmotion="f">what time is it?</case>
+    <case scale="5" emmotion="d">how do I turn the car on?</case>
+    <case scale="5" emmotion="j">at what time should I turn the furnace on?</case>
+    <case scale="5" emmotion="s">why did you bring this car to my house?</case>
+    <case scale="5" emmotion="a">give me the television remote control.</case>
+    <case scale="5" emmotion="j">leave my house.</case>
+    <case scale="5" emmotion="d">i met a woman while I was at the store.</case>
+    <case scale="5" emmotion="d">this is a meal.</case>
+
+    <!--<case scale="5">while I was at the grocery store I met a woman.</case>-->
+    <!--<case scale="5">i think you are a person.</case>-->
+    <!--<case scale="5">this is a house.</case>-->
+    <!--<case scale="5">how do I use this software?</case>-->
+    <!--<case scale="5">i was driving home yesterday and hit a dog.</case>-->
+</tests>

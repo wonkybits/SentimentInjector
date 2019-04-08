@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+    Scale is a double value
+    range is (-5, 5)
+-->
+<words>
+    <word scale="3.7">splendid</word>
+    <word scale="4">amazing</word>
+    <word scale="2">remarkable</word>
+    <word scale="3">supreme</word>
+    <word scale="2.5">moderate</word>
+    <word scale="4.4">fabulous</word>
+    <word scale="3.6">favorable</word>
+    <word scale="2.9">incredible</word>
+    <word scale="3.3">outstanding</word>
+    <word scale="5">perfect</word>
+    <word scale="3.5">wondrous</word>
+    <word scale="4.9">ultimate</word>
+    <word scale="4.7">spectacular</word>
+    <word scale="3">compassionate</word>
+    <word scale="4.2">divine</word>
+    <word scale="4.1">blissful</word>
+    <word scale="3.8">joyful</word>
+    <word scale="3.1">merry</word>
+    <word scale="2.9">powerful</word>
+    <word scale="4.8">quintessential</word>
+    <word scale="-4.7">atrocious</word>
+    <word scale="-0.5">awkward</word>
+    <word scale="-2">dangerous</word>
+    <word scale="-1.5">disagreeable</word>
+    <word scale="-3.8">grotesque</word>
+    <word scale="-0.8">stupid</word>
+    <word scale="-3.5">masochistic</word>
+    <word scale="-0.7">plain</word>
+    <word scale="-4.1">repulsive</word>
+    <word scale="-1.8">strange</word>
+    <word scale="-3.2">hateful</word>
+    <word scale="-1.1">bad</word>
+    <word scale="-4.8">cruel</word>
+    <word scale="-2.4">defiant</word>
+    <word scale="-3.1">obnoxious</word>
+    <word scale="-1.2">poor</word>
+    <word scale="-1.3">angry</word>
+    <word scale="-1.9">suspicious</word>
+    <word scale="-2.1">rude</word>
+    <word scale="-2.3">reckless</word>
+</words>
