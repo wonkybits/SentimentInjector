@@ -10,6 +10,7 @@ import edu.stanford.nlp.util.CoreMap;
 import java.util.*;
 
 public class SentimentInjector {
+    // Standford CoreNLP variables
     private Properties props;
     private StanfordCoreNLP pipeline;
     private Annotation document;
@@ -17,7 +18,42 @@ public class SentimentInjector {
     private List<CoreMap> sentences;
     private List<List<String>> tokenizedSentences;
 
-    public SentimentInjector(String text) {
+    // Adjective arrays and lists
+    private ArrayList<ScaledWord> anger_adj_arr;
+    private ArrayList<ScaledWord> fear_adj_arr;
+    private ArrayList<ScaledWord> joy_adj_arr;
+    private ArrayList<ScaledWord> sadness_adj_arr;
+    private ArrayList<ScaledWord> disgust_adj_arr;
+
+    private final String ANGER_ADJS = "anger_adj.xml";
+    private final String FEAR_ADJS = "fear_adj.xml";
+    private final String SADNESS_ADJS = "sadness_adj.xml";
+    private final String DISGUST_ADJS = "disgust_adj.xml";
+    private final String JOY_ADJS = "joy_adj.xml";
+
+    // sentiment variables
+    private double scale;
+    private char sentiment;
+
+    // thesholds
+    private final double ADJECTIVE_INJECTION_THRESHOLD = 1.0;
+
+    // XML Parser
+    XMLToSWArray xmlParser;
+
+    public SentimentInjector(String text, double scale, char sentiment) {
+        // set scale and sentiment
+        this.scale = scale;
+        this.sentiment = sentiment;
+
+        // populate adjective arrays
+        xmlParser = new XMLToSWArray();
+        anger_adj_arr = xmlParser.parseXMLToSWaArray(ANGER_ADJS);
+        fear_adj_arr = xmlParser.parseXMLToSWaArray(FEAR_ADJS);
+        sadness_adj_arr = xmlParser.parseXMLToSWaArray(SADNESS_ADJS);
+        disgust_adj_arr = xmlParser.parseXMLToSWaArray(DISGUST_ADJS);
+        joy_adj_arr = xmlParser.parseXMLToSWaArray(JOY_ADJS);
+
         // setup Stanford CoreNLP
         this.props = new Properties();
         this.props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
@@ -26,8 +62,9 @@ public class SentimentInjector {
         this.document = new Annotation(this.text);
         this.pipeline.annotate(document);
         sentences = document.get(CoreAnnotations.SentencesAnnotation.class);
-        tokenizedSentences = new ArrayList<List<String>>();
 
+        // tokenize sentences
+        tokenizedSentences = new ArrayList<List<String>>();
         for(CoreMap sentence : sentences) {
             List<String> tokens = new ArrayList<String>();
             for(CoreLabel token : sentence.get(CoreAnnotations.TokensAnnotation.class)) {
@@ -35,6 +72,22 @@ public class SentimentInjector {
             }
             tokenizedSentences.add(tokens);
         }
+    }
+
+    public double getScale() {
+        return scale;
+    }
+
+    public void setScale(double scale) {
+        this.scale = scale;
+    }
+
+    public char getSentiment() {
+        return sentiment;
+    }
+
+    public void setSentiment(char sentiment) {
+        this.sentiment = sentiment;
     }
 
     // handles one sentence at the moment
@@ -74,10 +127,45 @@ public class SentimentInjector {
     }
 
     public void injectAdjective() {
-        String adjective = "beautiful";
+        String adjective = this.findBest();
 
         for(List list : tokenizedSentences) {
             list.add(this.getDOIndex()-1, adjective);
         }
+    }
+
+    private ArrayList<ScaledWord> getList() {
+        switch(this.sentiment) {
+            case 'a':
+                return this.anger_adj_arr;
+            case 'd':
+                return this.disgust_adj_arr;
+            case 'f':
+                return this.fear_adj_arr;
+            case 'j':
+                return this.joy_adj_arr;
+            case 's':
+                return this.sadness_adj_arr;
+            default:
+                return null;
+        }
+    }
+
+    private String findBest() {
+        String returnVal = null;
+        double min = 10;
+        double delta;
+
+        for(ScaledWord sw : this.getList()) {
+            delta = Math.abs(sw.getScale() - this.getScale());
+            if (sw.getScale() == this.getScale()) {
+                returnVal = sw.getWord();
+            } else if (delta < min) {
+                min = delta;
+                returnVal = sw.getWord();
+            }
+        }
+
+        return returnVal;
     }
 }

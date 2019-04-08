@@ -4,7 +4,7 @@ import java.util.List;
 public class main {
     public static void main(String[] args) {
         String testSentence = "While I was at the grocery store, I met a woman.";
-        SentimentInjector si = new SentimentInjector(testSentence);
+        SentimentInjector si = new SentimentInjector(testSentence, 5.0, 'j');
 
         si.injectAdjective();
 //        si.printSentences();
