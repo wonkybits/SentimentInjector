@@ -90,11 +90,11 @@ public class SentimentInjector {
         this.sentiment = sentiment;
     }
 
-    // handles one sentence at the moment
-    private int getDOIndex() {
+    // determine the index of the dependent element in the Direct Object relation
+    // -1 on error
+    private int getDOIndex(int index) {
         int dobjDepIndex = -1;
-        SemanticGraph dependencies = sentences.get(0).get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
-        Collection typedDep = dependencies.typedDependencies();
+        Collection typedDep = this.getTypedDependencies(index);
         Iterator<TypedDependency> iterator = typedDep.iterator();
 
         while(iterator.hasNext()) {
@@ -105,6 +105,12 @@ public class SentimentInjector {
         return dobjDepIndex;
     }
 
+    // get typed dependencies
+    private Collection getTypedDependencies(int index) {
+        return sentences.get(index).get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class).typedDependencies();
+    }
+
+    // assembles sentences from tokens
     public List<String> getMutatedSentences() {
         List<String> mutatedSentences = new ArrayList<String>();
         Iterator<List<String>> sentenceIterator = tokenizedSentences.iterator();
@@ -126,11 +132,21 @@ public class SentimentInjector {
         return mutatedSentences;
     }
 
+    // preform adjective injection
     public void injectAdjective() {
         String adjective = this.findBest();
+        int index = 0;
 
         for(List list : tokenizedSentences) {
-            list.add(this.getDOIndex()-1, adjective);
+            try {
+                list.add(this.getDOIndex(index)-1, adjective);
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("The sentence:");
+                System.out.println(list.toString());
+                System.out.println("caused an error");
+                System.out.println(this.getTypedDependencies(index).toString() + "\n");
+            }
+            index++;
         }
     }
 
