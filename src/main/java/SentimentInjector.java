@@ -56,7 +56,7 @@ public class SentimentInjector {
 
         // setup Stanford CoreNLP
         this.props = new Properties();
-        this.props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
+        this.props.setProperty("annotators", "tokenize, ssplit, pos, parse");
         this.pipeline = new StanfordCoreNLP(props);
         this.text = text;
         this.document = new Annotation(this.text);
